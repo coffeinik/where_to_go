@@ -13,13 +13,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='place',
             name='coordinates_lat',
-            field=models.DecimalField(decimal_places=6, default='', max_digits=9),
+            field=models.DecimalField(decimal_places=6, max_digits=9),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='place',
             name='coordinates_lng',
-            field=models.DecimalField(decimal_places=6, default='', max_digits=9),
+            field=models.DecimalField(decimal_places=6, max_digits=9),
             preserve_default=False,
         ),
     ]

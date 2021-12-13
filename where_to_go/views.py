@@ -5,7 +5,7 @@ from geojson import FeatureCollection, Feature, Point
 from places.models import Place
 
 def index(request):
-    places: Place = Place.objects.all()
+    places = Place.objects.all()
     feature_collection = FeatureCollection(features=[
         Feature(
             geometry=Point((place.coordinates_lng, place.coordinates_lat)),
