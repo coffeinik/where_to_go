@@ -1,10 +1,11 @@
+from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.html import mark_safe
 from .models import Place, PlaceImage
 
 
 
-class PlaceImageInline(admin.TabularInline):
+class PlaceImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = PlaceImage
     readonly_fields = ["image_preview"]
     fields = ('image', 'image_preview', 'order_number')

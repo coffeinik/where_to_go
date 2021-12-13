@@ -17,7 +17,11 @@ class Place(models.Model):
 class PlaceImage(models.Model):
     place = models.ForeignKey(Place, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField()
-    order_number = models.IntegerField()
+    order_number = models.IntegerField(default=1)
+
+    class Meta(object):
+        ordering = ['order_number']
+
 
     def __str__(self):
         return self.image.name
