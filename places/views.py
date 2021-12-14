@@ -1,10 +1,12 @@
-from django.http import JsonResponse
-
+from django.http import JsonResponse, HttpResponseNotFound
 from .models import Place
 
 
 def get_place(request, place_id):
-    place = Place.objects.get(pk=place_id)
+    try:
+        place = Place.objects.get(pk=place_id)
+    except Place.DoesNotExist:
+        return HttpResponseNotFound(f'Place with id {place_id} not found')
     place_json = {
         "title": place.title,
         "imgs": [image.image.url for image in place.images.all()],
