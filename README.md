@@ -1,7 +1,7 @@
 # Куда пойти - Москва глазами Артёма
 
-Этоn проект написан на Django для учебного приложения "Куда пойти".  
-
+Этот проект написан на Django для учебного приложения "Куда пойти".  
+Готовый к использованию сайт можно посмотреть [здесь](https://coffeinik.pythonanywhere.com).
 
 ## Как запустить
 
@@ -16,6 +16,10 @@ $ python manage.py runserver
 ```
 * Откройте `http://127.0.0.1:8000`.
 
+Переменные окружения, необходимые для запуска в production-mode
+* SECRET_KEY
+* ALLOWED_HOSTS
+* DATABASE_URL  
 
 ## Структура проекта и админка
 
@@ -72,6 +76,30 @@ GET http://localhost:8000/places/1/
 Чтобы создать пользователя с правами администратора, необходимо исполнить команду
 ```sh
 python manage.py createsuperuser
+```
+
+Для импорта данных из JSON с готовыми данными, необходимо воспользоваться командой load_place
+
+```sh
+./manage.py load_place "http://example.com/place.json'
+```
+ 
+По адресу http://example.com/place.json должны находиться тестовые данные в формате:
+```json
+
+{
+    "title": "Заголовок",
+    "imgs": [
+        "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/1f09226ae0edf23d20708b4fcc498ffd.jpg",       
+    ],
+    "description_short": "Короткое описание",
+    "description_long": "Длинное описание",
+    "coordinates": {
+        "lng": "37.50169",
+        "lat": "55.816591"
+    }
+}
+
 ```
 ## Цели проекта
 
